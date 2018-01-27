@@ -3,11 +3,13 @@
 
 //common js modules
 const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-goggle-oath20').Strategy;
+// passport called
+require('./services/passport');
+
 const app = express();
 
-passport.use(new GoogleStrategy());
+//call the routes module with app
+require('./routes/authRoutes')(app);
 
 // for heroku
 const PORT = process.env.PORT || 5000;
