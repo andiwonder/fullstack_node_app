@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 
 // passport called
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -31,6 +32,7 @@ app.use(passport.session());
 //call the routes module with app
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // express serves production assets like main.js
